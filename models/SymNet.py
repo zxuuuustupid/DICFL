@@ -101,10 +101,10 @@ class SymNet(nn.Module):
         loss_obj = F.cross_entropy(obj_pred, objs)
         loss_pos_attr = F.cross_entropy(attr_pos_pred, attrs)
         loss_pos_obj = F.cross_entropy(obj_pos_pred, objs)
-        loss = 0.1*loss_attr + loss_obj + 0.1*loss_pos_attr + loss_pos_obj
 
         rmd_prob = self.RMD_prob(feat_plus, feat_minus, img_feat)
-
+	loss_rmd = F.mse_loss(rmd_prob, attrs.float())
+        loss = 0.1 * loss_attr + loss_obj + 0.1 * loss_pos_attr + loss_pos_obj + loss_sym +loss_rmd
         return loss, {'attr': attr_pred, 'obj': obj_pred, 'rmd': rmd_prob}
 
     def val_forward(self, x,epoch):
