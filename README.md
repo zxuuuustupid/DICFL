@@ -77,7 +77,7 @@ The loss weights are set as follows:
 ### 3. Result
 On **Combination zero-shot learning (CZSL)** task, DBC significantly improved the recognition accuracy of unseen combinations while maintaining stable performance for seen combinations.
 
-实验结果表明：
+The results show：
 
 - **MIT-States / UT-Zappos50K**  
   DBC significantly outperforms baseline methods (such as independent attribute-object classifiers) in terms of accuracy on unseen combinations.
